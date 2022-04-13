@@ -1,0 +1,128 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html:focus-within {
+  scroll-behavior: smooth;
+}
+html, body {
+  height: 100%;
+}
+body {
+  line-height: calc(2px + 2ex + 2px);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+}
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+a:not([class]) {
+  -webkit-text-decoration-skip-ink: all;
+          text-decoration-skip-ink: all;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/* Using below when you use framework */
+/* #root, #__next {
+  isolation: isolate;
+} */
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clock {
+  width: min(80%, 25rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: clamp(1rem, 4.3vw, 1.5rem) solid white;
+  box-shadow:
+    0 0 0 4px rgba(0,0,0,0.1),
+    inset 0 0 0 3px #EFEFEF,
+    inset 0 0 10px black,
+    0 0 10px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+}
+.hand {
+  transform-origin: 100%;
+  width: calc(50% - 0.5rem);
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  box-shadow: 
+    -20px -20px 40px 10px hsl(0, 0%, 20%),
+    -20px 10px 20px 10px white;
+  background-color: black;
+}
+.hand::after {
+  content: '';
+  position: absolute;
+  height: .5rem;
+  background-color: black;
+  border-radius: 100% 0.5rem 0.5rem 100%;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.middle {
+  width: 5%;
+  aspect-ratio: 1;
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  border-radius: 50%;
+  z-index: 10;
+}
+.hand__hour {
+  z-index: 3;
+}
+.hand__min {
+  z-index: 2;
+}
+.hand__second {
+  z-index: 1;
+}
+.hand__hour::after {
+  width: 60%;
+}
+.hand__min::after {
+  width: 80%;
+}

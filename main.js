@@ -7,14 +7,27 @@ function runClock() {
   const currentHours = currentTime.getHours()
   const currentMinutes = currentTime.getMinutes()
   const currentSeconds = currentTime.getSeconds()
-  const secondHandRotateDegree = (currentSeconds * 6) + 90
-  const minuteHandRotateDegree = (currentMinutes * 6) + 90
-  // const hourHandRotateDegree = (currentHours * 30) + 90
-  secondHand.style.transform = `rotate(${secondHandRotateDegree}deg)`
-  minuteHand.style.transform = `rotate(${minuteHandRotateDegree}deg)`
-  // hourHand.style.transform = `rotate(${hourHandRotateDegree}deg)`
-  // console.log({currentSeconds})
-  // console.log({currentMinutes})
-}
 
-// setInterval(runClock, 1000)
+  const secondHandRotateDegree = (currentSeconds * 6)
+  const minuteHandRotateDegree = (currentMinutes * 6)
+
+  let hourHandRotateDegree = (currentHours > 11 ? currentHours - 12 : currentHours) * 30
+  const minuteCauseHourHandRotate = Math.floor(currentMinutes / 10)
+  if (minuteCauseHourHandRotate === 5) {
+    hourHandRotateDegree += 24
+  } else if (minuteCauseHourHandRotate !== 0) {
+    hourHandRotateDegree += minuteCauseHourHandRotate * 6
+  }
+
+  secondHand.style.transform = `translate(-100%, -50%) rotate(${secondHandRotateDegree}deg)`
+  minuteHand.style.transform = `translate(-100%, -50%) rotate(${minuteHandRotateDegree}deg)`
+  hourHand.style.transform = `translate(-100%, -50%) rotate(${hourHandRotateDegree}deg)`
+}
+runClock()
+
+setInterval(runClock, 1000)
+// ? 要改善360deg -> 0deg的狀況，會有transform迴轉一圈的問題
+// ? 想要新增background隨時間改變而有不同圖片的功能
+// ? 想要新增選色功能
+
+// Image by <a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1834990">Pexels</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1834990">Pixabay</a>

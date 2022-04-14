@@ -46,6 +46,10 @@ function changeColor(hour) {
     {
       name: '--ground-clr',
       value: 'green'
+    },
+    {
+      name: '--roman-clr',
+      value: 'snow'
     }
   ]
   if (hour >= 6 && hour < 18) {

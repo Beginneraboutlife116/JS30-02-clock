@@ -60,7 +60,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .page {
-  --clock-clr: darkred;
+  --clock-clr: PaleVioletRed;
   --sky-clr: darkblue;
   --ground-clr: darkgreen;
   --clock-border-clr: #aaa;
@@ -102,7 +102,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 .clock {
   z-index: 3;
-  width: min(60%, 20rem);
+  width: min(60%, 22.5rem);
   aspect-ratio: 1;
   border-radius: 50%;
   border: clamp(0.5rem, 2.2vw, 0.75rem) solid var(--clock-border-clr);
@@ -123,8 +123,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .clock::before, .clock::after, .for-roman::before, .for-roman::after {
   position: absolute;
   transform: translate(-50%, -50%) rotate(-90deg);
-  font-size: clamp(1rem, 4.3vw, 1.5rem);
-  color: var(--clock-border-clr);
+  font-size: clamp(1.25rem, 5.3vw, 1.75rem);
 }
 .clock::before, .clock::after {
   top: 50%;

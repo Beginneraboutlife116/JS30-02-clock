@@ -59,61 +59,113 @@ p, h1, h2, h3, h4, h5, h6 {
   }
 }
 
-:root {
-  --bg-color: pink;
-}
-
 .page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  --bg-color: pink;
+  position: relative;
 }
-.clock {
-  width: min(80%, 25rem);
+.sky {
+  height: 60%;
+  background-color: lightblue;
+}
+.ground {
+  height: 40%;
+  background-color: green;
+  position: relative;
+  z-index: 2;
+  border-top: 5px solid black;
+}
+.outer-circle {
+  width: min(90%, 40rem);
   aspect-ratio: 1;
   border-radius: 50%;
-  border: clamp(1rem, 4.3vw, 1.5rem) solid white;
+  background-color: yellow;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+}
+.clock {
+  z-index: 3;
+  width: min(60%, 20rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: clamp(0.5rem, 2.2vw, 0.75rem) solid white;
   box-shadow:
     0 0 0 4px rgba(0,0,0,0.1),
     inset 0 0 0 3px #EFEFEF,
     inset 0 0 10px black,
     0 0 10px rgba(0,0,0,0.2);
-  position: relative;
+  position: absolute;
   overflow: hidden;
   background-color: var(--bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: rotate(90deg);
+  transform: rotate(90deg) translate(-50%, 50%);
+  inset: 50%;
+}
+.clock::before, .clock::after, .for-roman::before, .for-roman::after {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-size: clamp(1rem, 4.3vw, 1.5rem);
+  color: white;
+}
+.clock::before, .clock::after {
+  top: 50%;
+}
+.clock::before {
+  content: '\216B';
+  left: 7%;
+}
+.clock::after {
+  content: '\2165';
+  right: -1%;
+}
+.for-roman::before, .for-roman::after {
+  left: 50%;
+}
+.for-roman::before {
+  content: '\2162';
+  top: 7%;
+}
+.for-roman::after {
+  content: '\2168';
+  bottom: 1%;
 }
 .hand {
   height: .5rem;
-  border-radius: 100% .5rem .5rem 100%;
+  border-radius: .5rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-100%, -50%);
   transform-origin: 100%;
-  background-color: black;
 }
 .middle {
   width: 5%;
   aspect-ratio: 1;
   background-color: black;
   border-radius: 50%;
-  z-index: 10;
+  border: 2px solid var(--bg-color);
+  z-index: 4;
 }
 .hand__hour {
+  background-color: hsl(0, 0%, 0%);
   width: 35%;
-  z-index: 3;
+  z-index: 1;
 }
 .hand__minute {
+  background-color: hsl(0, 0%, 25%);
   width: 42.5%;
   z-index: 2;
 }
 .hand__second {
-  width: calc(50% - 1rem);
-  height: 1px;
-  z-index: 1;
+  width: 55%;
+  height: 4px;
+  z-index: 3;
+  transform-origin: 80%;
+  transform: translate(-80%, -50%);
+  background-color: red;
   transition: rotate 1s cubic-bezier(.38,.36,.67,1.59);
 }

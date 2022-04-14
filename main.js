@@ -10,6 +10,7 @@ function runClock() {
   const currentHours = currentTime.getHours()
   const currentMinutes = currentTime.getMinutes()
   const currentSeconds = currentTime.getSeconds()
+  changeColor(currentHours)
 
   const secondHandRotateDegree = (currentSeconds * 6)
   const minuteHandRotateDegree = (currentMinutes * 6)
@@ -27,6 +28,31 @@ function runClock() {
   outerCircle.style.transform = `translate(-50%, -50%) rotate(${-hourHandRotateDegree}deg)`
   moon.style.transform = `translateY(-40%) rotate(${hourHandRotateDegree - 360}deg)`
   sun.style.transform = `translateY(40%) rotate(${hourHandRotateDegree}deg)`
+}
+function changeColor(hour) {
+  const colorStyles = [
+    {
+      name: '--clock-clr',
+      value: 'pink'
+    },
+    {
+      name: '--clock-border-clr',
+      value: '#fff'
+    },
+    {
+      name: '--sky-clr',
+      value: 'lightblue'
+    },
+    {
+      name: '--ground-clr',
+      value: 'green'
+    }
+  ]
+  if (hour >= 6 && hour < 18) {
+    colorStyles.forEach(colorStyle => {
+      document.body.style.setProperty(colorStyle.name, colorStyle.value)
+    })
+  }
 }
 runClock()
 

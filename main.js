@@ -1,6 +1,9 @@
 const secondHand = document.querySelector('.hand__second')
 const minuteHand = document.querySelector('.hand__minute')
 const hourHand = document.querySelector('.hand__hour')
+const outerCircle = document.querySelector('.outer-circle')
+const sun = document.querySelector('.sun')
+const moon = document.querySelector('.moon')
 
 function runClock() {
   const currentTime = new Date()
@@ -18,10 +21,12 @@ function runClock() {
   } else if (minuteCauseHourHandRotate !== 0) {
     hourHandRotateDegree += minuteCauseHourHandRotate * 6
   }
-
   secondHand.style.transform = `translate(-80%, -50%) rotate(${secondHandRotateDegree}deg)`
   minuteHand.style.transform = `translate(-100%, -50%) rotate(${minuteHandRotateDegree}deg)`
   hourHand.style.transform = `translate(-100%, -50%) rotate(${hourHandRotateDegree}deg)`
+  outerCircle.style.transform = `translate(-50%, -50%) rotate(${-hourHandRotateDegree}deg)`
+  moon.style.transform = `translateY(-40%) rotate(${hourHandRotateDegree - 360}deg)`
+  sun.style.transform = `translateY(40%) rotate(${hourHandRotateDegree}deg)`
 }
 runClock()
 

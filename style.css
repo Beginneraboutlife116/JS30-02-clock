@@ -78,12 +78,24 @@ p, h1, h2, h3, h4, h5, h6 {
   width: min(90%, 40rem);
   aspect-ratio: 1;
   border-radius: 50%;
-  background-color: yellow;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.sun, .moon {
+  width: 20%;
+}
+.sun {
+  transform: translateY(40%);
+}
+.moon {
+  transform: translateY(-40%);
 }
 .clock {
   z-index: 3;

@@ -25,7 +25,12 @@ Users should be able to:
 
 ### Screenshot
 
-
+![desktop-clock-daylight](./image/screenshot/desktop-daylight.png)
+![desktop-clock-daynight](./image/screenshot/desktop-daynight.png)
+<div style="display: flex;">
+  <img src="./image/screenshot/mobile-daylight.png" alt="mobile-daylight" style="width: 50%;"/>
+  <img src="./image/screenshot/mobile-daynight.png" alt="mobile-daynight" style="width: 50%;"/>
+</div>
 
 ### Links
 

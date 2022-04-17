@@ -12,7 +12,6 @@ This is my solution for JS30 day two challenge!
     - [What I learned](#what-i-learned)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
-  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -43,22 +42,34 @@ Users should be able to:
 
 ### What I learned
 
+The most thing I had learned is 
+1. How to use JavaScript to manipulate the CSS transform property 
+   - But once I found that I could only use CSS custom property to accomplish my purpose.
+   - I think using CSS custom property would be more convenient than only using `HTMLElement.style.transform`.
+     ```js
+     hourHand.style.transform = `translate(-50%, -50%) rotate(${hourHandRotateDegree}deg)`
+     // another way
+     const hourHandRotateDegreeForTransform = hourHandRotateDegree.toString() + 'deg'
+     hourHand.style.setProperty(rotateTime, hourHandRotateDegreeForTransform)
+     ```
+     ```css
+     .hour-hand {
+       transform: translate(-50%, -50%) rotate(var(--rotateTime))
+     }
+     ```
+     This would avoid to reset other transform value, like translate
+2. And also how to set the [cubic-bezier function](https://cubic-bezier.com/#.17,.67,.83,.67).
+3. And [HTML entities, CSS code](https://www.toptal.com/designers/htmlarrows/symbols/).
+
 ### Continued development
 
--[] User could switch clock interface background color.
--[] User could input what picture they like for clock interface.
--[] User could drag the clock interface select on the top of clock interface.
--[] User could see more vivid background picture.
+- [ ] User could switch clock interface background color.
+- [ ] User could input what picture they like for clock interface.
+- [ ] User could drag the clock interface select on the top of clock interface.
+- [ ] User could see more vivid background picture.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- [Cubic-bezier function](https://cubic-bezier.com/#.17,.67,.83,.67) - This helped me to adjust my cubic-bezier parameters.
+- [HTML entities, CSS code](https://www.toptal.com/designers/htmlarrows/symbols/) - This could help me to find HTML entities and CSS code when I set Roman number in my clock.
+- [CSS property](https://css-tricks.com/a-complete-guide-to-custom-properties/) - This is a completed CSS property guideline. It's really useful.

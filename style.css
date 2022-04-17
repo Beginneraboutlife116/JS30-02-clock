@@ -65,13 +65,14 @@ p, h1, h2, h3, h4, h5, h6 {
   --ground-clr: darkgreen;
   --clock-border-clr: #aaa;
   position: relative;
+  overflow: hidden;
 }
 .sky {
-  height: 60%;
+  height: 60vh;
   background-color: var(--sky-clr);
 }
 .ground {
-  height: 40%;
+  height: 40vh;
   background-color: var(--ground-clr);
   position: relative;
   z-index: 2;
@@ -93,6 +94,46 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 .sun, .moon {
   width: 15%;
+  position: relative;
+  cursor: pointer;
+}
+.author-info {
+  background-color: var(--clock-clr);
+  width: 200%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  position: absolute;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+.author-info::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%);
+}
+#icon-author {
+  position: absolute;
+  visibility: hidden;
+}
+#icon-author:checked + .author-info {
+  opacity: 1;
+}
+.author-info::before {
+  border: 10px solid;
+  border-color: transparent var(--clock-clr) transparent transparent;
+  top: 50%;
+  left: -10px;
+}
+.moon > .author-info {
+  top: 50%;
+  left: 120%;
+}
+.sun > .author-info {
+  top: 50%;
+  left: 120%;
 }
 .sun {
   transform: translateY(50%);

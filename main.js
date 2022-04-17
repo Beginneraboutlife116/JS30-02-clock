@@ -16,13 +16,15 @@ function runClock() {
   const minuteHandRotateDegree = (currentMinutes * 6)
 
   let hourHandRotateDegree = (currentHours > 11 ? currentHours - 12 : currentHours) * 30
+  let outerRotateDegree = currentHours * (-15)
   const minuteCauseHourHandRotate = Math.floor(currentMinutes / 10)
   if (minuteCauseHourHandRotate === 5) {
     hourHandRotateDegree += 24
+    outerRotateDegree -= 12
   } else if (minuteCauseHourHandRotate !== 0) {
     hourHandRotateDegree += minuteCauseHourHandRotate * 6
+    outerRotateDegree -= minuteCauseHourHandRotate * 3
   }
-  const outerRotateDegree = currentHours * (-15)
 
   secondHand.style.transform = `translate(-80%, -50%) rotate(${secondHandRotateDegree}deg)`
   minuteHand.style.transform = `translate(-100%, -50%) rotate(${minuteHandRotateDegree}deg)`
